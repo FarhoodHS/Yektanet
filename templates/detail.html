@@ -1,0 +1,7 @@
+{% for u in urls %}
+  <h3>{{ u.original_url }}:</h3>
+  <br>
+  <a href="{% url 'goto' u.shortened_url %}">{{ u.shortened_url }}</a>
+  <p>{{ u.clicked }}</p>
+  <hr>
+{% endfor %}

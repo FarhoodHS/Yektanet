@@ -1,0 +1,12 @@
+<form method='POST' action="{% url 'home' %}">
+    {% csrf_token %}
+    <input type="text", name="original_url", placeholder="http://">
+    <button>Shorten</button>
+
+</form>
+{% if original_url %}
+  <p>{{ original_url }}</p>
+{% endif %}
+{% if shortened_url %}
+  <a href="{% url 'goto' shortened_url %}">{{ shortened_url }}</a>
+{% endif %}
