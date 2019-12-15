@@ -1,1 +1,7 @@
-filter by day
+{% for u in url %}
+  {{ u.url.original_url }}
+  <br>
+  {{ u.date }}
+  <hr>
+{% endfor %}
+<h3>{{count}}</h3>

@@ -1,9 +1,24 @@
-<form method='POST' action="{% url 'home' %}">
-    {% csrf_token %}
-    <input type="text", name="original_url", placeholder="http://">
-    <button>Shorten</button>
-
+{% if user.is_authenticated %}
+<form action="{% url 'logout' %}" method="POST">
+  {% csrf_token %}
+  <button>Log out of {{ user.username }}</button>
 </form>
+
+<form method='POST' action="{% url 'home' %}">
+  {% csrf_token %}
+  <input type="text", name="original_url", placeholder="http://">
+  <button>Shorten</button>
+</form>
+<h4><a href="{% url 'links' %}">Show my links</a></h4>
+{% else %}
+<form action="{% url 'login' %}">
+  <button>Login to start Rockin</button>
+</form>
+<form action="{% url 'signup' %}">
+  <button>Need an account?</button>
+</form>
+{% endif %}
+
 {% if original_url %}
   <p>{{ original_url }}</p>
 {% endif %}

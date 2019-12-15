@@ -1,1 +1,6 @@
-filter by month
+{% for u in url %}
+  {{ u.url.original_url }}
+  <br>
+  {{ u.date }}
+  <hr>
+{% endfor %}
